@@ -3,8 +3,9 @@ darle click a un carro y llegar a la pagina del carro en especifico, que se pued
 catalogo de categorias (sedanes, hatchbacks, suvs, pickups, etc.) que la gente se pueda suscribir con su direccion de correo, para
 que avise que mande un correo cada que hay un nuevo coche por seccion escogida por el cliente, tenedr un prefijo admin para administrar
 la pagina y el sistema y logearme en un log in, reportes, crear un dashboard para los reportes. charts.js son graficas.
+
 Crear base de datos en SQLITE con las siguientes relaciones: 
-DatosCoche: Marca, Modelo, Año, Precio, Kilometraje, Color, NumeroDeSerie
+Vehiculos: Marca, Modelo, Año, Precio, Kilometraje, Color, NumeroDeSerie
 Sucursales: Nombre, Direccion, Telefono
 Categorias: Nombre
 Users: Nombre, Correo, Password, Categorias
