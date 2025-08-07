@@ -5,8 +5,10 @@ que avise que mande un correo cada que hay un nuevo coche por seccion escogida p
 la pagina y el sistema y logearme en un log in, reportes, crear un dashboard para los reportes. charts.js son graficas.
 
 Crear base de datos en SQLITE con las siguientes relaciones: 
-Vehiculos: Marca, Modelo, Año, Precio, Kilometraje, Color, NumeroDeSerie
-Sucursales: Nombre, Direccion, Telefono
-Categorias: Nombre
-Users: Nombre, Correo, Password, Categorias
-Admin: Nombre, Correo, Password, Nivel
+
+vehiculos: id, marca, modelo, año, precio, kilometraje, color, numero_de_serie
+sucursales: id, nombre, direccion, telefono
+categorias: id, nombre
+users: id, username, password, correo, admin
+correos:  id, nombre, correo
+preferencias: id, fk_categorias
