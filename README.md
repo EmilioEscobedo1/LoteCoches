@@ -6,7 +6,7 @@ la pagina y el sistema y logearme en un log in, reportes, crear un dashboard par
 
 Crear base de datos en SQLITE con las siguientes relaciones: 
 
-vehiculos: id, marca, modelo, año, precio, kilometraje, color, numero_de_serie, precio_minimo_ precio_sugerido, fk_sucursales
+vehiculos: id, marca, modelo, año, precio, kilometraje, color, numero_de_serie, precio_minimo_ precio_sugerido, fk_sucursales, fk_categoria
 sucursales: id, nombre, direccion, telefono
 categorias: id, nombre
 users: id, username, password, correo, admin
