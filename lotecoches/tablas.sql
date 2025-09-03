@@ -2,12 +2,12 @@ CREATE TABLE vehiculos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     marca VARCHAR(100) NOT NULL,
     modelo VARCHAR(100),
-    año VARCHAR(4),
+    anio VARCHAR(4),
     precio VARCHAR(20),
     kilometraje VARCHAR(20),
     color VARCHAR(100),
     numero_de_serie VARCHAR(100),
-    categoria_id INT
+    categoria_id INT,
     FOREIGN KEY (categoria_id) REFERENCES categorias(id)
 );
 
@@ -40,6 +40,6 @@ CREATE TABLE correos (
 
 CREATE TABLE preferencias (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_categoria INT
+    id_categoria INT,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id)
 );
