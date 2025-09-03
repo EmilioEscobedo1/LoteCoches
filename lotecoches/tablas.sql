@@ -1,5 +1,10 @@
+CREATE TABLE categorias (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE vehiculos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     marca VARCHAR(100) NOT NULL,
     modelo VARCHAR(100),
     anio VARCHAR(4),
@@ -7,39 +12,38 @@ CREATE TABLE vehiculos (
     kilometraje VARCHAR(20),
     color VARCHAR(100),
     numero_de_serie VARCHAR(100),
-    categoria_id INT,
-    FOREIGN KEY (categoria_id) REFERENCES categorias(id)
+    categoria_id INTEGER,
+    sucursal_id INTEGER,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(id),
+    FOREIGN KEY (sucursal_id) REFERENCES sucursales(id)
 );
 
 CREATE TABLE sucursales (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre VARCHAR(100) NOT NULL,
     direccion VARCHAR(100),
-    telefono VARCHAR (100)
-);
-
-CREATE TABLE categorias (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR (100) NOT NULL
+    telefono VARCHAR(100)
 );
 
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre VARCHAR(100) NOT NULL,
     username VARCHAR(100) NOT NULL,
     password VARCHAR(64) NOT NULL,
     correo VARCHAR(100),
-    admin BIT NOT NULL
+    admin INTEGER NOT NULL
 );
 
+
 CREATE TABLE correos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre VARCHAR(100) NOT NULL,
     correo VARCHAR(100)
 );
 
+
 CREATE TABLE preferencias (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_categoria INT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_categoria INTEGER,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id)
 );

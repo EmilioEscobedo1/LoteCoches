@@ -17,6 +17,7 @@ use Cake\ORM\Entity;
  * @property string|null $color
  * @property string|null $numero_de_serie
  * @property int|null $categoria_id
+ * @property int|null $sucursal_id
  *
  * @property \App\Model\Entity\Categoria $categoria
  */
@@ -40,6 +41,7 @@ class Vehiculo extends Entity
         'color' => true,
         'numero_de_serie' => true,
         'categoria_id' => true,
+        'sucursal_id' => true,
         'categoria' => true,
     ];
 }

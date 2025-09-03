@@ -28,6 +28,7 @@ class VehiculosFixture extends TestFixture
                 'color' => 'Lorem ipsum dolor sit amet',
                 'numero_de_serie' => 'Lorem ipsum dolor sit amet',
                 'categoria_id' => 1,
+                'sucursal_id' => 1,
             ],
         ];
         parent::init();

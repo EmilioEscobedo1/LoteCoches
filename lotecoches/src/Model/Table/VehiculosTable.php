@@ -46,6 +46,10 @@ class VehiculosTable extends Table
         $this->belongsTo('Categorias', [
             'foreignKey' => 'categoria_id',
         ]);
+        $this->belongsTo('Sucursals', [
+            'foreignKey' => 'sucursal_id',
+            'className' => 'Sucursales',
+        ]);
     }
 
     /**
@@ -96,6 +100,10 @@ class VehiculosTable extends Table
             ->integer('categoria_id')
             ->allowEmptyString('categoria_id');
 
+        $validator
+            ->integer('sucursal_id')
+            ->allowEmptyString('sucursal_id');
+
         return $validator;
     }
 
@@ -109,6 +117,7 @@ class VehiculosTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['categoria_id'], 'Categorias'), ['errorField' => 'categoria_id']);
+        $rules->add($rules->existsIn(['sucursal_id'], 'Sucursals'), ['errorField' => 'sucursal_id']);
 
         return $rules;
     }
