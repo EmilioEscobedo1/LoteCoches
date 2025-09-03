@@ -25,6 +25,7 @@ CREATE TABLE categorias (
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
     username VARCHAR(100) NOT NULL,
     password VARCHAR(64) NOT NULL,
     correo VARCHAR(100),
