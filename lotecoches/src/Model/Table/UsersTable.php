@@ -74,7 +74,7 @@ class UsersTable extends Table
             ->allowEmptyString('correo');
 
         $validator
-            ->scalar('admin')
+            ->integer('admin')
             ->requirePresence('admin', 'create')
             ->notEmptyString('admin');
 

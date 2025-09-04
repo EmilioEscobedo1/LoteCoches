@@ -34,13 +34,11 @@
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($user->id) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Admin') ?></th>
+                    <td><?= $this->Number->format($user->admin) ?></td>
+                </tr>
             </table>
-            <div class="text">
-                <strong><?= __('Admin') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($user->admin)); ?>
-                </blockquote>
-            </div>
         </div>
     </div>
 </div>
