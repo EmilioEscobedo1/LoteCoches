@@ -55,7 +55,17 @@ return function (RouteBuilder $routes): void {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        $builder->connect('/'     , [
+            'controller' => 'Vehiculos', 
+            'action' => 'home'
+        ]);
+
+        $builder->connect('/admin', [
+            'controller' => 'Lotes', 
+            'action' => 'index', 
+            'prefix' => 'Admin'
+        ]);
+
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
@@ -75,12 +85,18 @@ return function (RouteBuilder $routes): void {
          * It is NOT recommended to use fallback routes after your initial prototyping phase!
          * See https://book.cakephp.org/5/en/development/routing.html#fallbacks-method for more information
          */
+
+
         $builder->fallbacks();
+
     });
 
-    $routes->prefix('Admin', function (RouteBuilder $routes) {
+
+$routes->prefix('Admin', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
+
+
 
     /*
      * If you need a different set of middleware or none at all,
