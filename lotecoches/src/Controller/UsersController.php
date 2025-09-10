@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller\Admin;
+namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\EventInterface;
@@ -16,7 +16,7 @@ class UsersController extends AppController
     public function beforeFilter(EventInterface $event): void
     {
         parent::beforeFilter($event);
-        // Permitir login y logout sin autenticación
+        // Permitir acceso a login y logout sin estar autenticado
         $this->Authentication->allowUnauthenticated(['login', 'logout']);
     }
 
@@ -26,7 +26,11 @@ class UsersController extends AppController
 
         if ($result->isValid()) {
             $user = $result->getData();
-            return $this->redirect(['controller' => 'Dashboard', 'action' => 'index', 'prefix' => 'Admin']);
+            if (!empty($user->admin) && $user->admin == 1) {
+                return $this->redirect(['controller' => 'Dashboard', 'action' => 'index', 'prefix' => 'Admin']);
+            } else {
+                return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'home']);
+            }
         }
 
         if ($this->request->is('post') && !$result->isValid()) {

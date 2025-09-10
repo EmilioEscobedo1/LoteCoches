@@ -1,0 +1,127 @@
+/* Estilos generales del layout */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #2c3e50;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Barra lateral */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220px;
+    height: 100%;
+    background-color: #34495e;
+    padding-top: 30px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 1000;
+}
+
+.sidebar a {
+    display: block;
+    color: #ecf0f1;
+    padding: 15px 25px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #2c3a4a;
+    color: #fff;
+}
+
+/* Contenido principal */
+.main-content {
+    margin-left: 220px;
+    padding: 40px 60px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.main-content h1, .main-content h2, .main-content h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Tarjetas de contenido (por ejemplo, Vehículos) */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 25px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+}
+
+.card h4 {
+    margin-top: 0;
+    font-weight: 600;
+    color: #34495e;
+}
+
+/* Botones */
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #2980b9;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #3498db;
+}
+
+/* Tabla de datos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+table th, table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e1e4e8;
+    text-align: left;
+    font-weight: 500;
+    color: #34495e;
+}
+
+table th {
+    background-color: #2980b9;
+    color: #fff;
+    font-weight: 700;
+}
+
+table tr:hover {
+    background-color: #f6f8fa;
+}

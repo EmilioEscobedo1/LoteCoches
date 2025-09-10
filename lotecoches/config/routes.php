@@ -97,10 +97,19 @@ return function (RouteBuilder $routes): void {
 
 
 $routes->prefix('Admin', function (RouteBuilder $routes) {
-    // Connect /admin to DashboardController@index
+    // Conectar /admin directamente al dashboard
     $routes->connect('/', [
         'controller' => 'Dashboard',
         'action' => 'index'
+    ]);
+    // Rutas de login y logout dentro del prefijo Admin
+    $routes->connect('/login', [
+        'controller' => 'Users',
+        'action' => 'login'
+    ]);
+    $routes->connect('/logout', [
+        'controller' => 'Users',
+        'action' => 'logout'
     ]);
     $routes->fallbacks(DashedRoute::class);
 });
