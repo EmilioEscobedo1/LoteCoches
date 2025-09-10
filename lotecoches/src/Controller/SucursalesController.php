@@ -15,6 +15,11 @@ class SucursalesController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
+        public function initialize(): void
+    {
+        parent::initialize();
+        $this->viewBuilder()->setLayout('default');
+    }
     public function index()
     {
         $query = $this->Sucursales->find();

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Iniciar Sesión</title>
-    <?= $this->Html->css('login') ?> <!-- Aquí puedes poner tu CSS personalizado -->
+    <?= $this->Html->css('login') ?> 
 </head>
 <body>
     <div class="login-container">

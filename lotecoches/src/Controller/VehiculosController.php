@@ -10,6 +10,11 @@ namespace App\Controller;
  */
 class VehiculosController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->viewBuilder()->setLayout('default');
+    }
     /**
      * Index method
      *

@@ -10,11 +10,11 @@ namespace App\Controller;
  */
 class CorreosController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->viewBuilder()->setLayout('default');
+    }
     public function index()
     {
         $query = $this->Correos->find();

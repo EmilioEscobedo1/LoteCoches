@@ -15,11 +15,11 @@ class AppController extends Controller
         $this->loadComponent('Authentication.Authentication');
 
         // Layouts según prefijo y acción
-        $prefix = $this->request->getParam('prefix');
-        $action = $this->request->getParam('action');
-        $controller = $this->getName();
+        $prefix = $this->request->getParam('prefix') ?? '';
+        $action = $this->request->getParam('action') ?? '';
+        $controller = $this->getName() ?? '';
 
-        if ($prefix === 'Admin') {
+        if (strtolower($prefix) === 'admin') {
             $this->viewBuilder()->setLayout('admin');
         } elseif ($controller === 'Users' && in_array($action, ['login', 'add'])) {
             $this->viewBuilder()->setLayout('login'); // login + registro
@@ -31,7 +31,14 @@ class AppController extends Controller
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
+
         // Acciones públicas
-        $this->Authentication->addUnauthenticatedActions(['login', 'add', 'display', 'home']);
+        if ($this->getName() === 'Users') {
+            $this->Authentication->allowUnauthenticated(['login', 'add']);
+        }
+
+        if ($this->getName() === 'Pages') {
+            $this->Authentication->allowUnauthenticated(['display', 'home']);
+        }
     }
 }

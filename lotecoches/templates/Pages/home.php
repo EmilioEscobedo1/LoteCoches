@@ -139,9 +139,6 @@ $this->assign('title', 'Inicio');
                 <p>No hay vehículos disponibles en este momento.</p>
             <?php endif; ?>
         </div>
-        <div class="text-center">
-            <?= $this->Html->link('Ver todos los vehículos', ['controller' => 'Vehiculos', 'action' => 'index'], ['class' => 'button']) ?>
-        </div>
     </section>
 
     <?php if (!empty($vehiculos)): ?>
