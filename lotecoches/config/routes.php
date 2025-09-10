@@ -55,17 +55,21 @@ return function (RouteBuilder $routes): void {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/'     , [
-            'controller' => 'Vehiculos', 
-            'action' => 'home'
+        $builder->connect('/', [
+        'controller' => 'Pages',
+        'action' => 'display',
+        'home'
         ]);
 
-        $builder->connect('/admin', [
-            'controller' => 'Lotes', 
-            'action' => 'index', 
-            'prefix' => 'Admin'
+        // Removed direct /admin connection that forced redirection or specific controller
+        $builder->connect('/login', [
+            'controller' => 'Users',
+            'action' => 'login'
         ]);
-
+        $builder->connect('/logout', [
+            'controller' => 'Users',
+            'action' => 'logout'
+        ]);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
@@ -93,6 +97,11 @@ return function (RouteBuilder $routes): void {
 
 
 $routes->prefix('Admin', function (RouteBuilder $routes) {
+    // Connect /admin to DashboardController@index
+    $routes->connect('/', [
+        'controller' => 'Dashboard',
+        'action' => 'index'
+    ]);
     $routes->fallbacks(DashedRoute::class);
 });
 

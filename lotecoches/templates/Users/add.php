@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
+<?= $this->Html->css('users') ?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -21,7 +22,6 @@
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
                     echo $this->Form->control('correo');
-                    echo $this->Form->control('admin');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -1,0 +1,69 @@
+
+
+/* General body styling */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Center the form container */
+.row {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.column-80 {
+    width: 400px;
+}
+
+/* Form container styling */
+.users.form.content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* Fieldset and legend styling */
+.users.form.content fieldset {
+    border: none;
+    margin-bottom: 15px;
+}
+
+.users.form.content legend {
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Input fields styling */
+.users.form.content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Submit button styling */
+.users.form.content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.users.form.content button:hover {
+    background-color: #0056b3;
+}
+
+/* Hide side navigation for login/register pages */
+.side-nav {
+    display: none;
+}

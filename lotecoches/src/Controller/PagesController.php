@@ -19,8 +19,8 @@ namespace App\Controller;
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
-use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\ORM\TableRegistry;
 
 /**
  * Static content controller
@@ -43,7 +43,7 @@ class PagesController extends AppController
      *   be found and not in debug mode.
      * @throws \Cake\View\Exception\MissingTemplateException In debug mode.
      */
-    public function display(string ...$path): ?Response
+    public function display(string ...$path): ?\Cake\Http\Response
     {
         if (!$path) {
             return $this->redirect('/');
@@ -60,6 +60,15 @@ class PagesController extends AppController
             $subpage = $path[1];
         }
         $this->set(compact('page', 'subpage'));
+
+        // Mostrar preview de vehículos en la home
+        if ($page === 'home') {
+            $vehiculosTable = TableRegistry::getTableLocator()->get('Vehiculos');
+            $vehiculos = $vehiculosTable->find()
+                ->limit(6)
+                ->all();
+            $this->set(compact('vehiculos'));
+        }
 
         try {
             return $this->render(implode('/', $path));

@@ -3,52 +3,63 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-class UsersController extends AppController{
+use Cake\Event\EventInterface;
+use Cake\Auth\DefaultPasswordHasher;
 
-    public function beforeFilter(\Cake\Event\EventInterface $event): void
+class UsersController extends AppController
+{
+    public function beforeFilter(EventInterface $event): void
     {
         parent::beforeFilter($event);
-        $this->Authentication->addUnauthenticatedActions(['login','add']);
+        // Allow unauthenticated users to access login and add actions
+        $this->Authentication->addUnauthenticatedActions(['login', 'add']);
     }
 
     public function login()
-    {
-        $this->request->allowMethod(['get', 'post']);
-        $result = $this->Authentication->getResult();
-        if ($result && $result->isValid()) {
-            $redirect = $this->request->getQuery('redirect', [
-                'controller' => 'Vehiculos',
-                'action' => 'home',
-            ]);
+{
+    $this->request->allowMethod(['get', 'post']);
+    $this->viewBuilder()->setLayout('login');
 
-            return $this->redirect($redirect);
-        }
-        if ($this->request->is('post') && !$result->isValid()) {
-            $this->Flash->error(__('Invalid username or password'));
-        }
+    $result = $this->Authentication->getResult();
+
+    if ($result->isValid()) {
+        // Redirige al dashboard admin
+        $redirect = $this->request->getQuery('redirect', [
+            'prefix' => 'Admin',
+            'controller' => 'Dashboard',
+            'action' => 'index'
+        ]);
+        return $this->redirect($redirect);
     }
 
-    public function add()
-    {
-        $user = $this->Users->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
-        }
-        $this->set(compact('user'));
+    if ($this->request->is('post') && !$result->isValid()) {
+        $this->Flash->error(__('Usuario o contraseña inválidos'));
     }
+}
+
+public function add()
+{
+    $user = $this->Users->newEmptyEntity();
+    if ($this->request->is('post')) {
+        $user = $this->Users->patchEntity($user, $this->request->getData());
+        // Asignar admin por default si quieres
+        if (!isset($user->admin)) {
+            $user->admin = 1;
+        }
+        if ($this->Users->save($user)) {
+            $this->Flash->success(__('Usuario registrado correctamente'));
+            return $this->redirect(['action' => 'login']);
+        }
+        $this->Flash->error(__('No se pudo registrar el usuario, revisa los campos'));
+    }
+    $this->set(compact('user'));
+}
 
     public function logout()
     {
         $result = $this->Authentication->getResult();
         if ($result && $result->isValid()) {
             $this->Authentication->logout();
-
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
     }

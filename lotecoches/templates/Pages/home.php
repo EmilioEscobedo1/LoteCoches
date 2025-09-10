@@ -63,28 +63,123 @@ endif;
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        CakePHP: the rapid development PHP framework:
+        Lote de Coches - Bienvenido
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
-
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake', 'home']) ?>
-
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container text-center">
-            <a href="https://cakephp.org/" target="_blank" rel="noopener">
-                <img alt="CakePHP" src="https://cakephp.org/v2/img/logos/CakePHP_Logo.svg" width="350" />
-            </a>
-            <h1>
-                Bienvenido empleado!
-            </h1>
+<?php
+$this->assign('title', 'Inicio');
+?>
+<div class="container">
+
+    <header class="main-header">
+        <div class="logo">
+            <h1>Lote de Coches</h1>
         </div>
+        <nav class="main-nav">
+            <ul>
+                <li><?= $this->Html->link('Inicio', '/', ['class' => 'nav-link']) ?></li>
+                <li><?= $this->Html->link('Vehículos', ['controller' => 'Vehiculos', 'action' => 'index'], ['class' => 'nav-link']) ?></li>
+                <li><?= $this->Html->link('Contacto', '#contacto', ['class' => 'nav-link']) ?></li>
+            </ul>
+        </nav>
     </header>
-    
+    <section class="vehiculos-preview">
+        <h2>Nuestros Vehículos</h2>
+        <div class="vehiculos-grid">
+            <?php if (!empty($vehiculos)): ?>
+                <?php foreach ($vehiculos as $vehiculo): ?>
+                    <div class="vehiculo-card">
+                        <img src="<?= $vehiculo->imagen ?: '/img/car-placeholder.webp' ?>" alt="<?= h($vehiculo->marca) ?>">
+                        <h3><?= h($vehiculo->marca) ?> <?= h($vehiculo->modelo) ?></h3>
+                        <p>Año: <?= h($vehiculo->anio) ?></p>
+                        <p>Precio: <?= h($vehiculo->precio) ?></p>
+                        <a href="javascript:void(0);" class="button" onclick="openModal('modal-<?= $vehiculo->id ?>')">Ver más</a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No hay vehículos disponibles en este momento.</p>
+            <?php endif; ?>
+        </div>
+        <div class="text-center">
+            <?= $this->Html->link('Ver todos los vehículos', ['controller' => 'Vehiculos', 'action' => 'index'], ['class' => 'button']) ?>
+        </div>
+    </section>
+
+    <?php if (!empty($vehiculos)): ?>
+        <?php foreach ($vehiculos as $vehiculo): ?>
+            <div id="modal-<?= $vehiculo->id ?>" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-<?= $vehiculo->id ?>')">&times;</span>
+                    <h2><?= h($vehiculo->marca) ?> <?= h($vehiculo->modelo) ?></h2>
+                    <img src="<?= $vehiculo->imagen ?: '/img/car-placeholder.webp' ?>" alt="<?= h($vehiculo->marca) ?>">
+                    <p>Año: <?= h($vehiculo->anio) ?></p>
+                    <p>Kilometraje: <?= h($vehiculo->kilometraje) ?></p>
+                    <p>Color: <?= h($vehiculo->color) ?></p>
+                    <p>Precio: <?= h($vehiculo->precio) ?></p>
+                    <p>Número de serie: <?= h($vehiculo->numero_de_serie) ?></p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    <footer class="main-footer">
+        <p>&copy; <?= date('Y') ?> Lote de Coches - Todos los derechos reservados</p>
+    </footer>
+
+</div>
+
+<script>
+function openModal(id) {
+    document.getElementById(id).style.display = 'flex';
+}
+function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+}
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+    }
+}
+</script>
+
 </body>
 </html>

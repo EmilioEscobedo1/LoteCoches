@@ -61,31 +61,30 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
     }
 
     public function getAuthenticationService(ServerRequestInterface $request): AuthenticationServiceInterface
-    {
-        $authenticationService = new AuthenticationService([
-            'unauthenticatedRedirect' => Router::url('/users/login'),
-            'queryParam' => 'redirect',
-        ]);
+{
+    $authenticationService = new AuthenticationService([
+        'unauthenticatedRedirect' => Router::url('/users/login'),
+        'queryParam' => 'redirect',
+    ]);
 
-        // Load the authenticators, you want session first
-        $authenticationService->loadAuthenticator('Authentication.Session');
-        // Configure form data check to pick email and password
-        $authenticationService->loadAuthenticator('Authentication.Form', [
-            'fields' => [
-                'username' => 'username',
-                'password' => 'password',
-            ],
-            'loginUrl' => Router::url('/users/login'),
-            'identifier' => [
-                'Authentication.Password' => [
-                    'fields' => [
-                        'username' => 'username',
-                        'password' => 'password',
-                    ],
-                ],
-            ],
-        ]);
+    // Load the identifiers
+    $authenticationService->loadIdentifier('Authentication.Password', [
+        'fields' => [
+            'username' => 'username',
+            'password' => 'password',
+        ],
+    ]);
 
-        return $authenticationService;
-    }
+    // Load the authenticators
+    $authenticationService->loadAuthenticator('Authentication.Session');
+    $authenticationService->loadAuthenticator('Authentication.Form', [
+        'fields' => [
+            'username' => 'username',
+            'password' => 'password',
+        ],
+        'loginUrl' => Router::url('/users/login'),
+    ]);
+
+    return $authenticationService;
+}
 }
