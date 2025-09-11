@@ -20,7 +20,7 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
 
-$this->disableAutoLayout();
+
 
 $checkConnection = function (string $name) {
     $error = null;
@@ -71,64 +71,19 @@ endif;
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: auto;
-            padding: 20px;
-            border-radius: 5px;
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-        }
-        .close {
-            position: absolute;
-            right: 15px;
-            top: 10px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 <?php
 $this->assign('title', 'Inicio');
 ?>
 <div class="container">
-
-    <header class="main-header">
-        <div class="logo">
-            <h1>Lote de Coches</h1>
-        </div>
-        <nav class="main-nav">
-            <ul>
-                <li><?= $this->Html->link('Inicio', '/', ['class' => 'nav-link']) ?></li>
-                <li><?= $this->Html->link('Vehículos', ['controller' => 'Vehiculos', 'action' => 'index'], ['class' => 'nav-link']) ?></li>
-                <li><?= $this->Html->link('Contacto', '#contacto', ['class' => 'nav-link']) ?></li>
-            </ul>
-        </nav>
-    </header>
     <section class="vehiculos-preview">
         <h2>Nuestros Vehículos</h2>
         <div class="vehiculos-grid">
             <?php if (!empty($vehiculos)): ?>
                 <?php foreach ($vehiculos as $vehiculo): ?>
                     <div class="vehiculo-card">
-                        <img src="<?= $vehiculo->imagen ?: '/img/car-placeholder.webp' ?>" alt="<?= h($vehiculo->marca) ?>">
+                        <img src="/uploads/<?= h($vehiculo->imagen) ?>" alt="<?= h($vehiculo->marca) ?>">
                         <h3><?= h($vehiculo->marca) ?> <?= h($vehiculo->modelo) ?></h3>
                         <p>Año: <?= h($vehiculo->anio) ?></p>
                         <p>Precio: <?= h($vehiculo->precio) ?></p>
@@ -147,7 +102,7 @@ $this->assign('title', 'Inicio');
                 <div class="modal-content">
                     <span class="close" onclick="closeModal('modal-<?= $vehiculo->id ?>')">&times;</span>
                     <h2><?= h($vehiculo->marca) ?> <?= h($vehiculo->modelo) ?></h2>
-                    <img src="<?= $vehiculo->imagen ?: '/img/car-placeholder.webp' ?>" alt="<?= h($vehiculo->marca) ?>">
+                    <img src="/uploads/<?= h($vehiculo->imagen) ?>" alt="<?= h($vehiculo->marca) ?>">
                     <p>Año: <?= h($vehiculo->anio) ?></p>
                     <p>Kilometraje: <?= h($vehiculo->kilometraje) ?></p>
                     <p>Color: <?= h($vehiculo->color) ?></p>
@@ -157,11 +112,6 @@ $this->assign('title', 'Inicio');
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-
-    <footer class="main-footer">
-        <p>&copy; <?= date('Y') ?> Lote de Coches - Todos los derechos reservados</p>
-    </footer>
-
 </div>
 
 <script>

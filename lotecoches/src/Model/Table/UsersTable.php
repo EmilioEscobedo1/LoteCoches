@@ -7,6 +7,7 @@ use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 
 /**
  * Users Model
@@ -93,5 +94,19 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
 
         return $rules;
+    }
+
+    /**
+     * Automatically hashes password before saving user.
+     *
+     * @param string $password Plain password.
+     * @return string|null Hashed password or null.
+     */
+    protected function _setPassword(string $password): ?string
+    {
+        if (strlen($password)) {
+            return (new DefaultPasswordHasher())->hash($password);
+        }
+        return null;
     }
 }

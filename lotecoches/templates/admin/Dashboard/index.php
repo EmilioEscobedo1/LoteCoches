@@ -1,6 +1,4 @@
-<h1>Dashboard de Administración</h1>
-
-<h2>Vehículos</h2>
+<h2>Vehículos disponibles</h2>
 <table>
     <tr><th>ID</th><th>Marca</th><th>Modelo</th></tr>
     <?php foreach ($vehiculos as $v): ?>

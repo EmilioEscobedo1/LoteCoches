@@ -31,6 +31,11 @@ use Cake\ORM\TableRegistry;
  */
 class PagesController extends AppController
 {
+    public function beforeRender(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeRender($event);
+        $this->viewBuilder()->setLayout('default');
+    }
     /**
      * Displays a view
      *

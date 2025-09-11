@@ -1,11 +1,3 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Vehiculo $vehiculo
- * @var \Cake\Collection\CollectionInterface|string[] $categorias
- * @var \Cake\Collection\CollectionInterface|string[] $sucursals
- */
-?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -15,9 +7,9 @@
     </aside>
     <div class="column column-80">
         <div class="vehiculos form content">
-            <?= $this->Form->create($vehiculo) ?>
-            <fieldset>
-                <legend><?= __('Add Vehiculo') ?></legend>
+            <?= $this->Form->create($vehiculo, ['type' => 'file']) ?>
+<fieldset>
+    <legend><?= __('Add Vehiculo') ?></legend>
                 <?php
                     echo $this->Form->control('marca');
                     echo $this->Form->control('modelo');
@@ -28,6 +20,7 @@
                     echo $this->Form->control('numero_de_serie');
                     echo $this->Form->control('categoria_id', ['options' => $categorias, 'empty' => true]);
                     echo $this->Form->control('sucursal_id', ['options' => $sucursals, 'empty' => true]);
+                    echo $this->Form->control('imagen', ['type' => 'file']); // <-- control de archivo
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

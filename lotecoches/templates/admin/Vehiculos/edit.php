@@ -20,7 +20,7 @@
     </aside>
     <div class="column column-80">
         <div class="vehiculos form content">
-            <?= $this->Form->create($vehiculo) ?>
+            <?= $this->Form->create($vehiculo, ['type' => 'file']) ?>
             <fieldset>
                 <legend><?= __('Edit Vehiculo') ?></legend>
                 <?php
@@ -33,6 +33,16 @@
                     echo $this->Form->control('numero_de_serie');
                     echo $this->Form->control('categoria_id', ['options' => $categorias, 'empty' => true]);
                     echo $this->Form->control('sucursal_id', ['options' => $sucursals, 'empty' => true]);
+
+                    // Mostrar la imagen actual si existe
+                    if (!empty($vehiculo->imagen)) {
+                        echo '<div class="current-image">';
+                        echo $this->Html->image('uploads/' . $vehiculo->imagen, ['alt' => 'Imagen del vehículo', 'style' => 'max-width:200px;']);
+                        echo '</div>';
+                    }
+
+                    // Agregar control para subir nueva imagen
+                    echo $this->Form->control('imagen', ['type' => 'file', 'label' => 'Subir nueva imagen']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

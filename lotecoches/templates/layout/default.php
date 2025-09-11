@@ -3,35 +3,30 @@
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
-    </title>
     <?= $this->Html->meta('icon') ?>
-
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
-
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Lote de</span> coches</a>
+    <header class="main-header">
+        <div class="logo">
+            <h1>Lote de Coches</h1>
         </div>
-        <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
-        </div>
-    </nav>
+        <nav class="main-nav">
+            <ul>
+                <li><?= $this->Html->link('Inicio', '/', ['class' => 'nav-link']) ?></li>
+                <li><?= $this->Html->link('Contacto', '#contacto', ['class' => 'nav-link']) ?></li>
+                <li><?= $this->Html->link('Iniciar Sesion', ['prefix' => 'Admin', 'controller' => 'Dashboard', 'action' => 'index'], ['class' => 'nav-link']) ?></li>
+            </ul>
+        </nav>
+    </header>
     <main class="main">
-        <div class="container">
-            <?= $this->Flash->render() ?>
-            <?= $this->fetch('content') ?>
-        </div>
+        <?= $this->fetch('content') ?>
     </main>
-    <footer>
+    <footer class="main-footer">
+        <p>&copy; <?= date('Y') ?> Lote de Coches - Todos los derechos reservados</p>
     </footer>
 </body>
 </html>

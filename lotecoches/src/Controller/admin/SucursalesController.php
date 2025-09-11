@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller;
+    namespace App\Controller\Admin;
 
+    use App\Controller\AppController;
 /**
  * Sucursales Controller
  *
@@ -18,7 +19,7 @@ class SucursalesController extends AppController
         public function initialize(): void
     {
         parent::initialize();
-        $this->viewBuilder()->setLayout('default');
+        $this->viewBuilder()->setLayout('admin');
     }
     public function index()
     {

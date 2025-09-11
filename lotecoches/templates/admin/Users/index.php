@@ -1,14 +1,16 @@
+</instructions>
+<content>
 <?php
 /**
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\User> $users
  */
 ?>
-<div class="users index content">
-    <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+<div class="admin-content">
+    <?= $this->Html->link(__('Nuevo usuario'), ['action' => 'add'], ['class' => 'button btn-primary float-right']) ?>
     <h3><?= __('Users') ?></h3>
     <div class="table-responsive">
-        <table>
+        <table class="admin-table">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
@@ -16,7 +18,7 @@
                     <th><?= $this->Paginator->sort('username') ?></th>
                     <th><?= $this->Paginator->sort('correo') ?></th>
                     <th><?= $this->Paginator->sort('admin') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class="admin-actions"><?= __('Acciones') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -27,15 +29,16 @@
                     <td><?= h($user->username) ?></td>
                     <td><?= h($user->correo) ?></td>
                     <td><?= $this->Number->format($user->admin) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
+                    <td class="admin-actions">
+                        <?= $this->Html->link(__('Ver'), ['action' => 'view', $user->id], ['class' => 'btn btn-view']) ?>
+                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id], ['class' => 'btn btn-edit']) ?>
                         <?= $this->Form->postLink(
-                            __('Delete'),
+                            __('Eliminar'),
                             ['action' => 'delete', $user->id],
                             [
                                 'method' => 'delete',
-                                'confirm' => __('Are you sure you want to delete # {0}?', $user->id),
+                                'confirm' => __('Estas seguro que quieres eliminar # {0}?', $user->id),
+                                'class' => 'btn btn-delete'
                             ]
                         ) ?>
                     </td>
@@ -44,14 +47,6 @@
             </tbody>
         </table>
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
 </div>
+</content>
+</oboe.edit_file>

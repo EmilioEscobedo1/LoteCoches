@@ -43,5 +43,6 @@ class Vehiculo extends Entity
         'categoria_id' => true,
         'sucursal_id' => true,
         'categoria' => true,
+        'imagen' => true, // Permite guardar la ruta de la imagen
     ];
 }

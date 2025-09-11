@@ -14,6 +14,7 @@
     </aside>
     <div class="column column-80">
         <div class="users form content">
+            <?= $this->Flash->render() ?>
             <?= $this->Form->create($user) ?>
             <fieldset>
                 <legend><?= __('Add User') ?></legend>
@@ -24,7 +25,7 @@
                     echo $this->Form->control('correo');
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Login'), ['type' => 'submit']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

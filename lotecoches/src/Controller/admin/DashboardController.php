@@ -17,5 +17,6 @@ class DashboardController extends AppController
         $users = $usersTable->find()->all();
 
         $this->set(compact('vehiculos', 'sucursales', 'users'));
+        
     }
 }

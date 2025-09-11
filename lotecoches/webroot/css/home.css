@@ -1,10 +1,12 @@
 /* Estilos generales */
-body {
+html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background: #f0f2f5;
     color: #333;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Encabezado */
@@ -13,16 +15,21 @@ header.main-header {
     color: #fff;
     padding: 20px 0;
     box-shadow: 0 6px 6px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-header.main-header .logo h1 {
-    margin: 0;
+.logo h1 {
     font-size: 2rem;
     font-weight: 700;
-    text-align: center;
     color: #fff;
+    padding-right: 900px;
+    align-self: center;
+    margin-bottom: 0;
 }
-
 header.main-header .main-nav ul {
     list-style: none;
     display: flex;
@@ -184,4 +191,34 @@ footer.main-footer {
 
 .close:hover {
     color: #000;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }
