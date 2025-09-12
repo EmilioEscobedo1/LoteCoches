@@ -7,22 +7,22 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Sucursales'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <h4 class="heading"><?= __('Acciones') ?></h4>
+            <?= $this->Html->link(__('Lista de sucursales'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column column-80">
         <div class="sucursales form content">
             <?= $this->Form->create($sucursale) ?>
             <fieldset>
-                <legend><?= __('Add Sucursale') ?></legend>
+                <legend><?= __('Añadir sucursal') ?></legend>
                 <?php
                     echo $this->Form->control('nombre');
                     echo $this->Form->control('direccion');
                     echo $this->Form->control('telefono');
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Aceptar')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

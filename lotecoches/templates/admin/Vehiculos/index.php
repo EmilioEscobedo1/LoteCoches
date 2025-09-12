@@ -14,7 +14,7 @@
                     <th class="thead"><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('marca') ?></th>
                     <th><?= $this->Paginator->sort('modelo') ?></th>
-                    <th><?= $this->Paginator->sort('anio') ?></th>
+                    <th><?= $this->Paginator->sort('año') ?></th>
                     <th><?= $this->Paginator->sort('precio') ?></th>
                     <th><?= $this->Paginator->sort('kilometraje') ?></th>
                     <th><?= $this->Paginator->sort('color') ?></th>

@@ -126,3 +126,96 @@ form input[type="text"], form input[type="email"], form input[type="password"], 
     width: 40%;
     padding: 10px 12px;
     margin: 5px 0 15px 0}
+/* Contenedor general del formulario */
+.form.content {
+    background: #f9fafb;        /* fondo claro */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;             /* centrar en pantalla */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Leyenda del formulario */
+.form.content fieldset legend {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #1e293b; /* gris azulado */
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Labels */
+.form.content label {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Inputs y selects */
+.form.content input[type="text"],
+.form.content input[type="password"],
+.form.content input[type="email"],
+.form.content select,
+.form.content textarea {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #cbd5e1; /* gris claro */
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    background: #fff;
+    transition: border 0.2s ease-in-out;
+}
+
+.form.content input:focus,
+.form.content select:focus,
+.form.content textarea:focus {
+    border-color: #2563eb; /* azul */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Botón principal */
+.form.content button {
+    background: #1e293b; /* azul oscuro */
+    color: #fff;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.form.content button:hover {
+    background: #334155; /* azul un poco más claro */
+}
+
+/* Sidebar de acciones */
+.side-nav {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.side-nav h4 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.side-nav-item {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.side-nav-item:hover {
+    color: #93c5fd; /* azul clarito */
+}

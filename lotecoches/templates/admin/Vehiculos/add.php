@@ -9,7 +9,7 @@
         <div class="vehiculos form content">
             <?= $this->Form->create($vehiculo, ['type' => 'file']) ?>
 <fieldset>
-    <legend><?= __('Add Vehiculo') ?></legend>
+    <legend><?= __('Añadir vehiculo') ?></legend>
                 <?php
                     echo $this->Form->control('marca');
                     echo $this->Form->control('modelo');
@@ -23,7 +23,7 @@
                     echo $this->Form->control('imagen', ['type' => 'file']); // <-- control de archivo
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Aceptar')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

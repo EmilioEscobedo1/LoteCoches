@@ -7,11 +7,11 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Vehiculo'), ['action' => 'edit', $vehiculo->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Vehiculo'), ['action' => 'delete', $vehiculo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $vehiculo->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Vehiculos'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Vehiculo'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+            <h4 class="heading"><?= __('Acciones') ?></h4>
+            <?= $this->Html->link(__('Editar Vehiculo'), ['action' => 'edit', $vehiculo->id], ['class' => 'side-nav-item']) ?>
+            <?= $this->Form->postLink(__('Eliminar Vehiculo'), ['action' => 'delete', $vehiculo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $vehiculo->id), 'class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Lista de Vehiculos'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Nuevo Vehiculo'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column column-80">
@@ -27,7 +27,7 @@
                     <td><?= h($vehiculo->modelo) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Anio') ?></th>
+                    <th><?= __('Año') ?></th>
                     <td><?= h($vehiculo->anio) ?></td>
                 </tr>
                 <tr>

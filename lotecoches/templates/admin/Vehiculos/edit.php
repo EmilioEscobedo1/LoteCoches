@@ -11,18 +11,18 @@
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Form->postLink(
-                __('Delete'),
+                __('Eliminar'),
                 ['action' => 'delete', $vehiculo->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $vehiculo->id), 'class' => 'side-nav-item']
+                ['confirm' => __('Seguro que quieres eliminar # {0}?', $vehiculo->id), 'class' => 'side-nav-item']
             ) ?>
-            <?= $this->Html->link(__('List Vehiculos'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Lista de vehiculos'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column column-80">
         <div class="vehiculos form content">
             <?= $this->Form->create($vehiculo, ['type' => 'file']) ?>
             <fieldset>
-                <legend><?= __('Edit Vehiculo') ?></legend>
+                <legend><?= __('Editar Vehiculo') ?></legend>
                 <?php
                     echo $this->Form->control('marca');
                     echo $this->Form->control('modelo');
@@ -45,7 +45,7 @@
                     echo $this->Form->control('imagen', ['type' => 'file', 'label' => 'Subir nueva imagen']);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Aceptar')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
